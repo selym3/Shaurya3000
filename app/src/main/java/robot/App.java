@@ -6,6 +6,8 @@ package robot;
 import imgui.ImGui;
 import imgui.app.Application;
 import imgui.app.Configuration;
+import imgui.extension.implot.ImPlot;
+import imgui.extension.implot.ImPlotContext;
 
 public class App extends Application {
 
@@ -14,9 +16,32 @@ public class App extends Application {
         config.setTitle("Dear ImGui is Awesome!");
     }
 
+    ImPlotContext context;
+
+    @Override
+    protected void preRun() {
+        ImPlot.setCurrentContext(context = ImPlot.createContext());
+    }
+
+    @Override
+    protected void postRun() {
+        ImPlot.destroyContext(context);
+    }
+
+    Motor[] motors = {
+        new Motor(0, 0.2, 1.7, 0.5),
+        new Motor(1, 0.2, 1.7, 0.5),
+        new Motor(2, 0.2, 1.7, 0.5),
+        new Motor(3, 0.2, 1.7, 0.5),
+    };
+
     @Override
     public void process() {
-        ImGui.text("Hello, World!");
+        for (Motor motor : motors) {
+            motor.run();
+            motor.push();
+        }
+        // ImGui.text("Hello, World!");
     }
 
     public static void main(String[] args) {
