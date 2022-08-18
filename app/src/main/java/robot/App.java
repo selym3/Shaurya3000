@@ -3,12 +3,24 @@
  */
 package robot;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
+import imgui.ImGui;
+import imgui.app.Application;
+import imgui.app.Configuration;
+
+public class App extends Application {
+
+    @Override
+    protected void configure(Configuration config) {
+        config.setTitle("Dear ImGui is Awesome!");
+    }
+
+    @Override
+    public void process() {
+        ImGui.text("Hello, World!");
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        launch(new App());
     }
+
 }
