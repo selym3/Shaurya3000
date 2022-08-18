@@ -29,10 +29,10 @@ public class App extends Application {
     }
 
     Motor[] motors = {
-        new Motor(0, 0.2, 1.7, 0.5),
-        new Motor(1, 0.2, 1.7, 0.5),
-        new Motor(2, 0.2, 1.7, 0.5),
-        new Motor(3, 0.2, 1.7, 0.5),
+        new Motor(0),
+        new Motor(1),
+        new Motor(2),
+        new Motor(3),
     };
 
     @Override

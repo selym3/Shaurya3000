@@ -29,10 +29,14 @@ public class Motor implements Simmable {
         this.kV = kV;
         this.kA = kA;
 
-        timedSeries = new TimedSeries(3.0);
+        timedSeries = new TimedSeries(5.0);
         velocity = 0.0;
 
         voltage = 0.0;
+    }
+    
+    public Motor(int id) {
+        this(id, 0.2, 1.7, 0.5);
     }
 
     @Override
